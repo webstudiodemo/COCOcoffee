@@ -14,41 +14,24 @@ function initOpening(){
  const intro=document.querySelector(".intro");
  if(!intro)return;
  document.body.style.overflow="hidden";
-
- const cookie=intro.querySelector(".intro-product-cookie");
- const croissant=intro.querySelector(".intro-product-croissant");
- const cup=intro.querySelector(".intro-product-cup");
+ const art=intro.querySelector(".intro-art-coffee");
  const wordBack=intro.querySelector(".intro-word-back");
  const wordFront=intro.querySelector(".intro-word-front");
  const chrome=intro.querySelectorAll(".intro-topline,.intro-caption");
-
- gsap.set([cookie,croissant,cup,wordBack,wordFront],{force3D:true});
- gsap.set(cookie,{x:-46,y:28,scale:1.075,opacity:0});
- gsap.set(croissant,{x:50,y:30,scale:1.075,opacity:0});
- gsap.set(cup,{y:42,scale:.84,opacity:0});
+ gsap.set([art,wordBack,wordFront],{force3D:true});
+ gsap.set(art,{scale:1.08,opacity:0,y:24});
  gsap.set(wordBack,{scale:1.075,opacity:0});
  gsap.set(wordFront,{scale:.94,opacity:0});
  gsap.set(chrome,{opacity:0});
-
- const finish=()=>{
-   document.body.style.overflow="";
-   intro.style.pointerEvents="none";
-   intro.style.display="none";
-   ScrollTrigger.refresh();
- };
-
+ const finish=()=>{document.body.style.overflow="";intro.style.pointerEvents="none";intro.style.display="none";ScrollTrigger.refresh()};
  const tl=gsap.timeline({defaults:{ease:"power3.out"},onComplete:finish});
- tl.to(wordBack,{scale:1,opacity:.92,duration:.72})
-   .to(cup,{y:0,scale:1,opacity:1,duration:.82,ease:"power4.out"},"-=.48")
-   .to(cookie,{x:0,y:0,scale:1,opacity:1,duration:.7},"-=.62")
-   .to(croissant,{x:0,y:0,scale:1,opacity:1,duration:.7},"-=.64")
-   .to(wordFront,{scale:1,opacity:1,duration:.62},"-=.55")
-   .to(chrome,{opacity:1,duration:.38,stagger:.04},"-=.34")
-   .to(".intro-scene",{scale:1.045,duration:.72,ease:"power2.inOut"},"+=.22")
-   .to(cookie,{x:-18,y:-8,scale:1.025,duration:.72,ease:"power2.inOut"},"<")
-   .to(croissant,{x:20,y:8,scale:1.03,duration:.72,ease:"power2.inOut"},"<")
-   .to(cup,{scale:1.055,y:-4,duration:.72,ease:"power2.inOut"},"<")
-   .to(intro,{yPercent:-100,duration:.78,ease:"power4.inOut"},"-=.08");
+ tl.to(wordBack,{scale:1,opacity:.82,duration:.68})
+   .to(art,{scale:1,opacity:1,y:0,duration:.9,ease:"power4.out"},"-=.5")
+   .to(wordFront,{scale:1,opacity:.72,duration:.55},"-=.5")
+   .to(chrome,{opacity:1,duration:.35,stagger:.04},"-=.3")
+   .to(art,{scale:1.035,y:-5,duration:.75,ease:"power2.inOut"},"+=.2")
+   .to(".intro-scene",{scale:1.025,duration:.75,ease:"power2.inOut"},"<")
+   .to(intro,{yPercent:-100,duration:.78,ease:"power4.inOut"},"-=.06");
 }
 function initHero(){
  if(reduced)return;
