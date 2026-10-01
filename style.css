@@ -59,3 +59,9 @@
  .intro-object-latte{left:-16vw;top:18vh;width:66vw;height:60vh}
  .intro-object-coffee{right:-16vw;top:18vh;width:66vw;height:60vh}
 }
+
+/* v15 — intro-only self-contained image render */
+.intro-object{display:block!important;visibility:visible!important;z-index:8!important}
+.intro-object>img{display:block!important;visibility:visible!important;opacity:1;width:200%;height:100%;max-width:none;object-fit:cover}
+.intro-object-latte>img{margin-left:0}
+.intro-object-coffee>img{margin-left:-100%}
