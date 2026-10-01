@@ -28,6 +28,11 @@ function initOpening(){
   .to(latte,{x:-12,y:-5,scale:1.025,duration:.72,ease:"power2.inOut"},"+=.18")
   .to(coffee,{x:12,y:4,scale:1.03,duration:.72,ease:"power2.inOut"},"<")
   .to(intro,{yPercent:-100,duration:.78,ease:"power4.inOut"},"-=.05");
+ if(matchMedia("(hover:hover) and (pointer:fine)").matches){
+  const lx=gsap.quickTo(latte,"x",{duration:.7,ease:"power3.out"}),ly=gsap.quickTo(latte,"y",{duration:.7,ease:"power3.out"});
+  const cx=gsap.quickTo(coffee,"x",{duration:.85,ease:"power3.out"}),cy=gsap.quickTo(coffee,"y",{duration:.85,ease:"power3.out"});
+  intro.addEventListener("pointermove",e=>{const nx=e.clientX/innerWidth-.5,ny=e.clientY/innerHeight-.5;lx(nx*-10);ly(ny*-6);cx(nx*9);cy(ny*5)});
+ }
 }
 function initHero(){
  if(reduced)return;
