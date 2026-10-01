@@ -65,3 +65,10 @@
 .intro-object>img{display:block!important;visibility:visible!important;opacity:1;width:200%;height:100%;max-width:none;object-fit:cover}
 .intro-object-latte>img{margin-left:0}
 .intro-object-coffee>img{margin-left:-100%}
+
+/* v16 — intro-only verified transparent assets */
+.intro-object{overflow:visible!important}
+.intro-object>img{width:100%!important;height:100%!important;max-width:100%!important;object-fit:contain!important;margin:0!important}
+.intro-object-latte{left:5vw;top:12vh;width:40vw;height:76vh}
+.intro-object-coffee{right:5vw;top:12vh;width:40vw;height:76vh}
+@media(max-width:800px){.intro-object-latte{left:-8vw;top:20vh;width:58vw;height:58vh}.intro-object-coffee{right:-8vw;top:20vh;width:58vw;height:58vh}}
