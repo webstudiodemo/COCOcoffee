@@ -38,7 +38,7 @@
 .intro-shadow{filter:none!important;opacity:.18;background:radial-gradient(ellipse,rgba(0,0,0,.68),transparent 70%)}
 
 /* v11 — generated 2.5D coffee campaign artwork; intro only */
-.intro-art-coffee{position:absolute;inset:0;z-index:6;background:url("assets/coco-intro.webp") center/cover no-repeat;will-change:transform,opacity;transform:translateZ(0);backface-visibility:hidden;pointer-events:none}
+.intro-art-coffee{position:absolute;inset:0;z-index:6;background-image:url("./assets/coco-intro.webp");background-position:center;background-size:cover;background-repeat:no-repeat;will-change:transform,opacity;transform:translateZ(0);backface-visibility:hidden;pointer-events:none}
 .intro-art-coffee:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at center,transparent 35%,rgba(8,7,6,.08) 65%,rgba(8,7,6,.34) 100%);pointer-events:none}
 .intro-word-back{z-index:4!important;opacity:.82}.intro-word-front{z-index:9!important}
 .intro-topline,.intro-caption{z-index:12!important}
