@@ -23,3 +23,7 @@
 /* v8 — cinema pin spacing correction */
 .cinema{height:165vh!important}
 @media(max-width:800px){.cinema{height:155vh!important}}
+
+/* v9 — tight handoff from cinema to menu */
+.cinema{height:138vh!important}
+@media(max-width:800px){.cinema{height:138vh!important}}
