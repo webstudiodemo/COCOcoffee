@@ -43,3 +43,7 @@
 .intro-word-back{z-index:4!important;opacity:.82}.intro-word-front{z-index:9!important}
 .intro-topline,.intro-caption{z-index:12!important}
 @media(max-width:800px){.intro-art-coffee{background-position:center center;background-size:cover}}
+
+/* v13 — intro artwork direct image render fix only */
+.intro-art-coffee{background:none!important;overflow:hidden}
+.intro-art-coffee>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transform:translateZ(0);backface-visibility:hidden}
