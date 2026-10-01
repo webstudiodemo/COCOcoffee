@@ -15,16 +15,16 @@ function initOpening(){
  const intro=document.querySelector(".intro");
  const scene=document.querySelector(".intro-scene");
  const tl=gsap.timeline({defaults:{ease:"power3.out"},onComplete:()=>{document.body.style.overflow="";if(intro)intro.style.pointerEvents="none";ScrollTrigger.refresh()}});
- gsap.set(".intro-product-cookie",{x:-80,y:55,rotateY:-12,rotateZ:-3,scale:1.14,opacity:0});
- gsap.set(".intro-product-croissant",{x:90,y:65,rotateY:14,rotateZ:4,scale:1.14,opacity:0});
- gsap.set(".intro-product-cup",{y:75,scale:.72,rotateZ:-6,opacity:0});
- gsap.set(".intro-word-back",{scale:1.18,opacity:0,filter:"blur(12px)"});
+ gsap.set(".intro-product-cookie",{x:-60,y:40,scale:1.1,opacity:0,force3D:true});
+ gsap.set(".intro-product-croissant",{x:65,y:45,scale:1.1,opacity:0,force3D:true});
+ gsap.set(".intro-product-cup",{y:55,scale:.78,opacity:0,force3D:true});
+ gsap.set(".intro-word-back",{scale:1.12,opacity:0,force3D:true});
  gsap.set(".intro-word-front",{scale:.88,opacity:0});
  gsap.set(".intro-topline,.intro-caption",{opacity:0});
- tl.to(".intro-word-back",{scale:1,opacity:.92,filter:"blur(0px)",duration:1.05})
-   .to(".intro-product-cup",{y:0,scale:1,rotateZ:0,opacity:1,duration:1.25,ease:"expo.out"},"-=.72")
-   .to(".intro-product-cookie",{x:0,y:0,rotateY:0,rotateZ:0,scale:1,opacity:1,duration:1.05},"-=.95")
-   .to(".intro-product-croissant",{x:0,y:0,rotateY:0,rotateZ:0,scale:1,opacity:1,duration:1.05},"-=.9")
+ tl.to(".intro-word-back",{scale:1,opacity:.92,duration:.85})
+   .to(".intro-product-cup",{y:0,scale:1,opacity:1,duration:1.05,ease:"expo.out"},"-=.72")
+   .to(".intro-product-cookie",{x:0,y:0,scale:1,opacity:1,duration:.9},"-=.95")
+   .to(".intro-product-croissant",{x:0,y:0,scale:1,opacity:1,duration:.9},"-=.9")
    .to(".intro-word-front",{scale:1,opacity:1,duration:.9},"-=.85")
    .to(".intro-topline,.intro-caption",{opacity:1,duration:.55,stagger:.08},"-=.5")
    .to(".intro-scene",{scale:1.075,z:80,duration:1.05,ease:"power2.inOut"},"+=.45")
@@ -44,12 +44,19 @@ function initHero(){
 }
 function initPinnedReveal(){
  if(reduced)return;
- const mm=gsap.matchMedia();
- mm.add("(min-width: 801px)",()=>{
-  const frame=document.querySelector(".cinema-frame");
-  gsap.timeline({scrollTrigger:{trigger:".cinema",start:"top top",end:"bottom bottom",scrub:1,pin:frame,anticipatePin:1}})
-   .to(frame,{width:"100vw",height:"100svh",left:0,top:0,ease:"none"})
-   .to(".cinema-image",{scale:1.08,ease:"none"},0);
+ const section=document.querySelector(".cinema"),frame=document.querySelector(".cinema-frame");
+ if(!section||!frame)return;
+ gsap.matchMedia().add({
+  desktop:"(min-width: 801px)",
+  mobile:"(max-width: 800px)"
+ },ctx=>{
+  const mobile=ctx.conditions.mobile;
+  gsap.set(frame,{width:mobile?"86vw":"56vw",height:mobile?"62svh":"68vh",left:mobile?"7vw":"22vw",top:mobile?"18vh":"16vh"});
+  const tl=gsap.timeline({scrollTrigger:{trigger:section,start:"top top",end:"bottom bottom",scrub:.75,pin:true,anticipatePin:1,invalidateOnRefresh:true}});
+  tl.to(frame,{width:"100vw",height:"100svh",left:0,top:0,ease:"none"},0)
+    .fromTo(".cinema-image",{scale:1.12},{scale:1,ease:"none"},0)
+    .fromTo(".cinema-label",{y:28,opacity:.35},{y:0,opacity:1,ease:"none"},.18);
+  return()=>tl.kill();
  });
 }
 function initHorizontal(){
