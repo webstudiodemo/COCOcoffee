@@ -27,3 +27,12 @@
 /* v9 — tight handoff from cinema to menu */
 .cinema{height:138vh!important}
 @media(max-width:800px){.cinema{height:138vh!important}}
+
+/* v10 — intro-only compositor optimization */
+.intro{contain:layout paint;will-change:transform;transform:translateZ(0)}
+.intro-scene{will-change:transform;transform:translateZ(0)}
+.intro-product,.intro-word{backface-visibility:hidden}
+.intro-product-cookie,.intro-product-croissant{contain:paint}
+.intro-atmosphere{filter:none!important;opacity:.09;background:radial-gradient(circle,rgba(164,110,61,.62) 0,rgba(164,110,61,.2) 42%,transparent 72%)}
+.intro-atmosphere-b{background:radial-gradient(circle,rgba(213,180,123,.48) 0,rgba(213,180,123,.14) 44%,transparent 72%)}
+.intro-shadow{filter:none!important;opacity:.18;background:radial-gradient(ellipse,rgba(0,0,0,.68),transparent 70%)}
